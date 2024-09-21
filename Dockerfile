@@ -20,7 +20,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy from the build stage
-COPY --from=builder /app/.svelte-kit ./svelte-kit
+COPY --from=builder /app/build ./build
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/yarn.lock ./
 
@@ -30,5 +30,5 @@ RUN yarn install --production --frozen-lockfile
 # Expose the port
 EXPOSE 3000
 
-# Run the app
-CMD ["node", "svelte-kit", "preview"]
+# Run the app (adapt this command based on your setup)
+CMD ["node", "build"]
