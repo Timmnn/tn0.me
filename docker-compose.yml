@@ -9,11 +9,12 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.sveltekit.rule=Host(`tn0.me`)"
+      - "traefik.http.routers.sveltekit.entrypoints=web"
       - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"
     networks:
       - traefik_network
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"
     environment:
       - NODE_ENV=production
     restart: unless-stopped
