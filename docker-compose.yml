@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  sveltekit-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sveltekit-app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sveltekit.rule=Host(`tn0.me`)"
+      - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"
+    networks:
+      - traefik
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
