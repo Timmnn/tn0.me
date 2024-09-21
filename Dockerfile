@@ -4,7 +4,7 @@ FROM node:18-alpine as builder
 
 WORKDIR /app
 
-# Copy package.json and yarn.lock and install dependencies using yarn
+# Copy package.json and yarn.lock to install dependencies using yarn
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
@@ -20,7 +20,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy from the build stage
-COPY --from=builder /app/build ./build
+COPY --from=builder /app/.svelte-kit ./svelte-kit
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/yarn.lock ./
 
@@ -31,4 +31,4 @@ RUN yarn install --production --frozen-lockfile
 EXPOSE 3000
 
 # Run the app
-CMD ["yarn", "preview"]
+CMD ["node", "svelte-kit", "preview"]
