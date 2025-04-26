@@ -28,15 +28,49 @@ const App = () => {
     () => [
       {
         id: "1",
-        title: "ITEX Jobbörse",
+        title: "ITEX Jobmarkt",
         liveUrl: "https://projektmarkt.it-excelsus.de/",
         thumbnail: "/itex-projectmarket.png",
         shortDescription:
           "Eine Full-Stack Jobplatform mit integriertem Bewerbungsprozess sowie einem CRM zur Job-, Bewerbungs- und Kundenverwaltung",
         technologies: ["React", "TailwindCSS", "Node.js", "MongoDB"],
-        type: "web",
+        type: "Web",
         description:
           "Ein detailliertes Jobportal mit fortschrittlichem CRM-System für die Job-, Bewerbungs- und Kundenverwaltung.",
+      },
+      {
+        id: "2",
+        title: "Bieg Hessen",
+        liveUrl: "https://www.bieg-hessen.de/",
+        thumbnail:
+          "https://lh4.googleusercontent.com/proxy/HqZySp0Ypn6Cyt3HF2iJNu62JIZHGaCaY8LGUvX4WH0oTD4JaoeRexbnsNCY_7nLgP-dG2eq_YhnpDvKXw7qBnEFU1mX3fdTkMortj3rmauiu1QMlbdYzzcOG4XYssIwrlgWJj645ZKaTitYRw-u3U4TXcCVQ4potf1Cz9LQ_RZK9bs4RqXoCn3m5zfF5urPwIGoDmy3vqb3merdbBSZCfuVkmO5JQSTtVNVZDgXQ4xTaGME_J0",
+        shortDescription: "Description coming soon...",
+        technologies: ["Description coming soon..."],
+        type: "Web",
+        description: "Description coming soon...",
+      },
+      {
+        id: "3",
+        title: "Waldferienpark Gerolstein",
+        liveUrl: "https://www.parkgerolstein.de/",
+        thumbnail:
+          "https://lh4.googleusercontent.com/proxy/HqZySp0Ypn6Cyt3HF2iJNu62JIZHGaCaY8LGUvX4WH0oTD4JaoeRexbnsNCY_7nLgP-dG2eq_YhnpDvKXw7qBnEFU1mX3fdTkMortj3rmauiu1QMlbdYzzcOG4XYssIwrlgWJj645ZKaTitYRw-u3U4TXcCVQ4potf1Cz9LQ_RZK9bs4RqXoCn3m5zfF5urPwIGoDmy3vqb3merdbBSZCfuVkmO5JQSTtVNVZDgXQ4xTaGME_J0",
+
+        shortDescription: "Description coming soon...",
+        technologies: ["Description coming soon..."],
+        type: "Web",
+        description: "Description coming soon...",
+      },
+      {
+        id: "4",
+        title: "Vireo Charting",
+        liveUrl: "https://github.com/Timmnn/vireo-charting",
+        thumbnail:
+          "https://lh4.googleusercontent.com/proxy/HqZySp0Ypn6Cyt3HF2iJNu62JIZHGaCaY8LGUvX4WH0oTD4JaoeRexbnsNCY_7nLgP-dG2eq_YhnpDvKXw7qBnEFU1mX3fdTkMortj3rmauiu1QMlbdYzzcOG4XYssIwrlgWJj645ZKaTitYRw-u3U4TXcCVQ4potf1Cz9LQ_RZK9bs4RqXoCn3m5zfF5urPwIGoDmy3vqb3merdbBSZCfuVkmO5JQSTtVNVZDgXQ4xTaGME_J0",
+        shortDescription: "Description coming soon...",
+        technologies: ["Description coming soon..."],
+        type: "Web",
+        description: "Description coming soon...",
       },
     ],
     [],
@@ -45,12 +79,12 @@ const App = () => {
   // Skills components organized by category for cleaner code
   const SkillsContent = useMemo(
     () => (
-      <div className="flex min-w-0 flex-col gap-4">
-        <h2 className="text-2xl font-bold text-white mb-4">
+      <div className="flex min-w-0 flex-col gap-4 items-center">
+        <h2 className="text-3xl font-bold text-white mb-8 text-center">
           {translate.skills.title}
         </h2>
 
-        <Card>
+        <Card className="w-[800px] max-w-full">
           <h3 className="text-xl font-semibold mb-4">
             {translate.skills.categories.languages}
           </h3>
@@ -118,7 +152,7 @@ const App = () => {
           </SkillContainer>
         </Card>
 
-        <Card>
+        <Card className="w-[800px] max-w-full">
           <h3 className="text-xl font-semibold mb-4">
             {translate.skills.categories.cloud}
           </h3>
@@ -146,7 +180,7 @@ const App = () => {
           </SkillContainer>
         </Card>
 
-        <Card>
+        <Card className="w-[800px] max-w-full">
           <h3 className="text-xl font-semibold mb-4">
             {translate.skills.categories.frameworks}
           </h3>
@@ -264,7 +298,7 @@ const App = () => {
           </SkillContainer>
         </Card>
 
-        <Card>
+        <Card className="w-[800px] max-w-full">
           <h3 className="text-xl font-semibold mb-4">
             {translate.skills.categories.databases}
           </h3>
@@ -312,7 +346,7 @@ const App = () => {
           </SkillContainer>
         </Card>
 
-        <Card>
+        <Card className="w-[800px] max-w-full">
           <h3 className="text-xl font-semibold mb-4">
             {translate.skills.categories.tools}
           </h3>
@@ -501,7 +535,7 @@ const App = () => {
               My Professional Background
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 ">
               <Card className="bg-gradient-to-br from-ctp-crust to-slate-900 transition-colors duration-300 h-full hover:to-slate-900/70">
                 <div className="p-6">
                   <div className="text-indigo-400 mb-4">
@@ -665,7 +699,7 @@ const App = () => {
         id: "projects",
         content: (
           <div className="flex flex-col gap-4 max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-4">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
               {translate.projects.title}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -796,12 +830,6 @@ const App = () => {
   }, [setupIntersectionObserver, language]);
 
   // Smooth scroll implementation for navigation
-  const scrollToSection = useCallback((sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
 
   return (
     <AppFrame nav={<NavBar activeSection={activeSection} />}>

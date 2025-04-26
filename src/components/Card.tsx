@@ -8,7 +8,7 @@ type CardProps = {
 export const Card = ({ children = "", className = "" }: CardProps) => {
   return (
     <div
-      className={`bg-slate-800 p-6 rounded-2xl border border-slate-600 ${className}`}
+      className={` p-6 rounded-2xl border border-slate-600 bg-gradient-to-br from-ctp-crust to-slate-900 ${className}`}
     >
       {children}
     </div>

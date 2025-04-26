@@ -17,7 +17,7 @@ export interface Project {
   image?: string;
   technologies: string[];
   features?: string[];
-  type: "web" | "app" | "other";
+  type: "Web" | "App" | "Other";
   liveUrl?: string;
   githubUrl?: string;
   caseStudyUrl?: string;

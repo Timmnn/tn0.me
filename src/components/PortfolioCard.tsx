@@ -7,6 +7,7 @@ import { PiClock } from "react-icons/pi";
 import { SiRedbull } from "react-icons/si";
 import { PiCodeBold } from "react-icons/pi";
 import { Button } from "./Button";
+import { scrollToSection } from "@/lib/scrollToElement";
 
 export default function PortfolioCard() {
   const [typedText, setTypedText] = useState("");
@@ -134,7 +135,13 @@ export default function PortfolioCard() {
               transition={{ duration: 0.5, delay: 0.8 }}
               className="mt-4 flex gap-4"
             >
-              <a href="#projects">
+              <a
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("projects");
+                }}
+              >
                 <Button>{translate.projects.see_projects}</Button>
               </a>
 

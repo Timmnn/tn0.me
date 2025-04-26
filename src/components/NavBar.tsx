@@ -9,6 +9,7 @@ import {
   PiX,
   PiList,
 } from "react-icons/pi";
+import { scrollToSection } from "@/lib/scrollToElement";
 
 export const NavBar = ({ activeSection }: { activeSection: string }) => {
   const { t, setLanguage, language } = useI18n();
@@ -177,7 +178,12 @@ export const NavBar = ({ activeSection }: { activeSection: string }) => {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  onClick={handleNavClick}
+                  onClick={(e) => {
+                    scrollToSection(item.id);
+                    e.preventDefault();
+
+                    handleNavClick();
+                  }}
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
                     activeSection === item.id
                       ? "bg-ctp-blue text-black"
