@@ -10,6 +10,7 @@ import PortfolioCard from "@/components/PortfolioCard";
 import { NavBar } from "@/components/NavBar";
 import { Project, ProjectCard } from "@/components/ProjectCard";
 import { ProjectModal } from "@/components/ProjectModal";
+import { scrollToSection } from "@/lib/scrollToElement";
 
 type Section = {
   name: string;

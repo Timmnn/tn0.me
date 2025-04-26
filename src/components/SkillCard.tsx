@@ -18,7 +18,7 @@ export const SkillCard = ({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col items-center bg-ctp-base  rounded-lg p-4 transition-colors duration-300 hover:to-slate-900/70"
+      className={`flex flex-col items-center bg-ctp-base  rounded-lg p-4 transition-colors duration-300 hover:to-slate-900/70 ${className}`}
     >
       <div className="w-12 h-12 mb-2">{icon}</div>
       <span className="text-slate-300">{label}</span>

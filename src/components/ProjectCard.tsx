@@ -39,7 +39,7 @@ export const ProjectCard = ({ project, onOpenModal }: ProjectCardProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100">
           <div className="absolute bottom-4 left-4 flex gap-2">
-            {project.type === "web" && project.liveUrl && (
+            {project.type === "Web" && project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
