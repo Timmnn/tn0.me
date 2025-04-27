@@ -26,7 +26,7 @@ const Page = () => {
         id: "about",
         content: <AboutSection />,
       },
-      { content: <SkillsSection key={0} />, name: t.nav.skills, id: "home" },
+      { content: <SkillsSection key={0} />, name: t.nav.skills, id: "skills" },
       {
         name: t.nav.projects,
         id: "projects",
