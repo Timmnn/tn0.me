@@ -1,22 +1,19 @@
 import { useState, useEffect } from "react";
+import { useI18n } from "@/i18n";
 import { motion } from "framer-motion";
-import { useI18n } from "../i18n";
-import { MainCard } from "./MainCard";
-import { PiLightbulbFilament } from "react-icons/pi";
-import { PiClock } from "react-icons/pi";
+import { MainCard } from "../MainCard";
 import { SiRedbull } from "react-icons/si";
-import { PiCodeBold } from "react-icons/pi";
-import { Button } from "./Button";
+import { PiCodeBold, PiLightbulbFilament, PiClock } from "react-icons/pi";
+import { Button } from "../Button";
 import { scrollToSection } from "@/lib/scrollToElement";
 
-export default function PortfolioCard() {
+export const HeroSection = () => {
   const [typedText, setTypedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
 
   const { t } = useI18n();
-  const translate = t();
 
-  const fullText = translate.home.subtitle;
+  const fullText = t.home.subtitle;
 
   useEffect(() => {
     if (typedText.length < fullText.length) {
@@ -61,7 +58,7 @@ export default function PortfolioCard() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <h1 className="text-3xl font-bold text-ctp-subtext0 md:text-4xl">
-                {translate.home.title} 👋
+                {t.home.title} 👋
               </h1>
               <h2 className="mt-2 h-8 text-xl text-ctp-subtext1 md:text-2xl">
                 {typedText}
@@ -86,7 +83,7 @@ export default function PortfolioCard() {
                   </div>
                   <div className="text-2xl font-bold text-ctp-subtext0">8+</div>
                   <div className="text-xs text-ctp-overlay1">
-                    {translate.projects.stats.experience}
+                    {t.projects.stats.experience}
                   </div>
                 </div>
               </div>
@@ -100,7 +97,7 @@ export default function PortfolioCard() {
                     10.000+
                   </div>
                   <div className="text-xs text-ctp-overlay1">
-                    {translate.projects.stats.hours_coded}
+                    {t.projects.stats.hours_coded}
                   </div>
                 </div>
               </div>
@@ -112,7 +109,7 @@ export default function PortfolioCard() {
                   </div>
                   <div className="text-2xl font-bold text-ctp-text">∞</div>
                   <div className="text-xs text-ctp-overlay0">
-                    {translate.projects.stats.cans_redbull}
+                    {t.projects.stats.cans_redbull}
                   </div>
                 </div>
               </div>
@@ -125,7 +122,7 @@ export default function PortfolioCard() {
               className="w-full"
             >
               <div className="mt-2 text-center text-sm italic text-ctp-overlay1 md:text-left">
-                &quot;{translate.home.slogan}&quot;
+                &quot;{t.home.slogan}&quot;
               </div>
             </motion.div>
 
@@ -142,11 +139,11 @@ export default function PortfolioCard() {
                   scrollToSection("projects");
                 }}
               >
-                <Button>{translate.projects.see_projects}</Button>
+                <Button>{t.projects.see_projects}</Button>
               </a>
 
               <a href="#about">
-                <Button variant="outline">{translate.projects.about_me}</Button>
+                <Button variant="outline">{t.projects.about_me}</Button>
               </a>
             </motion.div>
           </div>
@@ -154,4 +151,4 @@ export default function PortfolioCard() {
       </MainCard>
     </div>
   );
-}
+};

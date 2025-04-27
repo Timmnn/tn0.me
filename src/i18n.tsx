@@ -1,6 +1,10 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  createContext,
+  ReactNode,
+  useContext,
+} from "react";
 
 const en = {
   language_picker: {
@@ -24,7 +28,7 @@ const en = {
     section_title: "About Me",
     subtitle: "Passionate developer creating digital experiences",
     title: "Technology Enthusiast",
-    text: `I'm a passionate programmer with 9 years of experience, primarily focused on web development. I thrive on building clean, efficient solutions and never settle for "just okay"—there's always a better way to do things. Curiosity drives me; I’m constantly learning and experimenting with new technologies to sharpen my skills and push boundaries. Whether it's refining code or tackling complex problems, I love the challenge of making things work right. Let's build something great together.`,
+    text: `I'm a passionate programmer with 9 years of experience, primarily focused on web development. I thrive on building clean, efficient solutions and never settle for "just okay"—there's always a better way to do things. Curiosity drives me; I'm constantly learning and experimenting with new technologies to sharpen my skills and push boundaries. Whether it's refining code or tackling complex problems, I love the challenge of making things work right. Let's build something great together.`,
     experience:
       "With [X] years in the industry, I've delivered solutions for clients ranging from startups to enterprises, specializing in [your specialties].",
     philosophy:
@@ -33,13 +37,12 @@ const en = {
       "I thrive on tackling complex technical challenges and finding elegant solutions that scale. My strength is breaking down problems into manageable components.",
     cta: "Browse my projects below or get in touch to discuss how I can help with your next initiative.",
   },
-
   projects: {
     title: "Projects",
     wip: "Work in Progress",
     stats: {
       experience: "Years Experience",
-      cans_redbull: "Cand of Red Bull",
+      cans_redbull: "Cans of Red Bull",
       hours_coded: "Hours Coded",
     },
     see_projects: "View Projects",
@@ -116,52 +119,63 @@ export enum Language {
   DE = "de",
 }
 
-// Custom event name for language changes
-const LANGUAGE_CHANGE_EVENT = "languageChange";
+const translationDictionary = {
+  [Language.EN]: en,
+  [Language.DE]: de,
+};
 
-export const useI18n = () => {
-  const [, forceUpdate] = useState({});
+interface I18nContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: typeof en; // Direct access to the current translation object
+  // String path translation function for fallback/dynamic access
+}
 
-  // Get language from sessionStorage or default to EN
-  const getStoredLanguage = (): Language => {
-    if (typeof sessionStorage !== "undefined") {
-      return (sessionStorage.getItem("language") as Language) || Language.EN;
-    }
-    return Language.EN;
-  };
+export const I18nContext = createContext<I18nContextType>({
+  language: Language.EN,
+  setLanguage: () => {},
+  t: en,
+});
+
+interface I18nProviderProps {
+  children: ReactNode;
+  defaultLanguage?: Language;
+}
+
+export const I18nProvider = ({
+  children,
+  defaultLanguage = Language.EN,
+}: I18nProviderProps) => {
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window === "undefined") return defaultLanguage;
+
+    const savedLanguage = localStorage.getItem("language") as Language | null;
+    return savedLanguage && Object.values(Language).includes(savedLanguage)
+      ? savedLanguage
+      : defaultLanguage;
+  });
 
   useEffect(() => {
-    const handleLanguageChange = () => {
-      forceUpdate({});
-    };
-
-    // Listen for the custom event
-    window.addEventListener(LANGUAGE_CHANGE_EVENT, handleLanguageChange);
-
-    // Clean up
-    return () => {
-      window.removeEventListener(LANGUAGE_CHANGE_EVENT, handleLanguageChange);
-    };
-  }, []);
-
-  const language_map = {
-    [Language.EN]: en,
-    [Language.DE]: de,
-  };
-
-  const setLanguage = (language: Language) => {
-    if (typeof sessionStorage !== "undefined") {
-      sessionStorage.setItem("language", language);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("language", language);
     }
-    // Dispatch event to notify all components
-    window.dispatchEvent(new Event(LANGUAGE_CHANGE_EVENT));
-  };
+  }, [language]);
 
-  const currentLanguage = getStoredLanguage();
-
-  return {
+  const currentTranslations = translationDictionary[language];
+  const value = {
+    language,
     setLanguage,
-    t: () => language_map[currentLanguage],
-    language: currentLanguage,
+    t: currentTranslations,
   };
+
+  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+};
+
+// Custom hook for using the i18n context
+export const useI18n = () => {
+  const context = useContext(I18nContext);
+  if (context === undefined) {
+    throw new Error("useI18n must be used within an I18nProvider");
+  }
+  return context;
 };

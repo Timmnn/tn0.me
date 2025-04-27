@@ -13,26 +13,25 @@ import { scrollToSection } from "@/lib/scrollToElement";
 
 export const NavBar = ({ activeSection }: { activeSection: string }) => {
   const { t, setLanguage, language } = useI18n();
-  const translate = t();
 
   const nav_items = [
     {
-      name: translate.nav.home,
+      name: t.nav.home,
       id: "home",
       icon: "🏠",
     },
     {
-      name: translate.nav.about,
+      name: t.nav.about,
       id: "about",
       icon: "👤",
     },
     {
-      name: translate.skills.title,
+      name: t.skills.title,
       id: "skills",
       icon: "🛠️",
     },
     {
-      name: translate.nav.projects,
+      name: t.nav.projects,
       id: "projects",
       icon: "📂",
     },
@@ -160,11 +159,11 @@ export const NavBar = ({ activeSection }: { activeSection: string }) => {
               options={[
                 {
                   id: "en" as Language,
-                  label: translate.language_picker.english,
+                  label: t.language_picker.english,
                 },
                 {
                   id: "de" as Language,
-                  label: translate.language_picker.german,
+                  label: t.language_picker.german,
                 },
               ]}
             />
