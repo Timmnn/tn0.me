@@ -25,8 +25,7 @@ export const ProjectsSection = () => {
         id: "2",
         title: "Bieg Hessen",
         liveUrl: "https://www.bieg-hessen.de/",
-        thumbnail:
-          "https://lh4.googleusercontent.com/proxy/HqZySp0Ypn6Cyt3HF2iJNu62JIZHGaCaY8LGUvX4WH0oTD4JaoeRexbnsNCY_7nLgP-dG2eq_YhnpDvKXw7qBnEFU1mX3fdTkMortj3rmauiu1QMlbdYzzcOG4XYssIwrlgWJj645ZKaTitYRw-u3U4TXcCVQ4potf1Cz9LQ_RZK9bs4RqXoCn3m5zfF5urPwIGoDmy3vqb3merdbBSZCfuVkmO5JQSTtVNVZDgXQ4xTaGME_J0",
+        thumbnail: "/bieg.png",
         shortDescription: "Description coming soon...",
         technologies: ["Description coming soon..."],
         type: "Web",
@@ -36,8 +35,7 @@ export const ProjectsSection = () => {
         id: "3",
         title: "Waldferienpark Gerolstein",
         liveUrl: "https://www.parkgerolstein.de/",
-        thumbnail:
-          "https://lh4.googleusercontent.com/proxy/HqZySp0Ypn6Cyt3HF2iJNu62JIZHGaCaY8LGUvX4WH0oTD4JaoeRexbnsNCY_7nLgP-dG2eq_YhnpDvKXw7qBnEFU1mX3fdTkMortj3rmauiu1QMlbdYzzcOG4XYssIwrlgWJj645ZKaTitYRw-u3U4TXcCVQ4potf1Cz9LQ_RZK9bs4RqXoCn3m5zfF5urPwIGoDmy3vqb3merdbBSZCfuVkmO5JQSTtVNVZDgXQ4xTaGME_J0",
+        thumbnail: "/gerolstein.png",
 
         shortDescription: "Description coming soon...",
         technologies: ["Description coming soon..."],
